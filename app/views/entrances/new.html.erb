@@ -1,0 +1,34 @@
+<h2>Controle de entradas</h2>
+<h3>Sala: <%= @room.name %></h3>
+<br/><br/>
+
+<%= form_tag room_entrances_path(@room) %>
+  <%= label_tag "Código de barras: " %>
+  <%= text_field_tag "bar_code", nil, :type => :password  %>
+  <%= submit_tag "Buscar" %>
+
+<br/><br/><br/>
+
+<% if @mensagem %>
+<div class="row">
+	<div class="span8 alert alert-<%= @notice %>">
+	<%= @mensagem %><br/><br/>
+	<% if @credential %>
+		<b>Participante: </b> 
+		<%= link_to @credential.participant.name, @credential.participant %> 
+		<br/>
+		<br/>
+		<%= image_tag @credential.participant.photo.image.url if @credential.participant.photo %>
+	<% end %>
+	</div>
+<% end %>
+</div>
+<br/><br/>
+
+<%= link_to voltar, @room %> | <%= link_to with_icon("Trocar sala", "icon-refresh"), rooms_path %>
+
+<script type="text/javascript">
+$(document).ready(function() { 
+	$("#bar_code").focus();
+});
+</script>

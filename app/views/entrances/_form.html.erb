@@ -1,0 +1,18 @@
+<%= form_for(@entrance) do |f| %>
+
+  <div class="field">
+    <%= f.label :credential %><br />
+    <%= f.text_field :credential %>
+  </div>
+  <div class="field">
+    <%= f.label :room %><br />
+    <%= f.text_field :room %>
+  </div>
+  <div class="field">
+    <%= f.label :was_allowed %><br />
+    <%= f.check_box :was_allowed %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

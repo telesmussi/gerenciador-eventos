@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Credential:</b>
+  <%= @payment.credential %>
+</p>
+
+<p>
+  <b>Method:</b>
+  <%= @payment.method %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @payment.amount %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @payment.user %>
+</p>
+
+<p>
+  <b>Observation:</b>
+  <%= @payment.observation %>
+</p>
+
+
+<%= link_to 'Edit', edit_payment_path(@payment) %> |
+<%= link_to 'Back', payments_path %>

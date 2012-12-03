@@ -1,0 +1,38 @@
+<%= f.inputs :name => "Dados Empresariais" do %> <br/>
+<div class="row">
+	<div class="span4">
+	<%= f.input :company_id, :as => :select, :label => "Empresa:", :collection => Hash[Company.order("name asc").map{|b| [b.name,b.id]}]  %>
+	<%= f.input :occupation , :label => "Ocupação:"%>
+	</div>
+	<div class="span4 offset1">
+		<a class="btn" onclick="updateCompanies()" style="margin-left:50px"><i class="icon-refresh"></i></a>
+		<a class="btn btn-info" onclick="window.open ('/companies/new?popup=yes','janela', 'width=500, height=700, scrollbars = no')" >Nova empresa</a>
+	</div>
+</div>
+<div class="alert" id="alerta-cracha">
+</div>
+<% end %>
+<br/>
+
+<script type="text/javascript">
+
+function updateCompanies() {
+		jQuery.get('/companies/select', function(data){
+			$("#participant_company_id").html(data);
+		});
+}
+
+$("#alerta-cracha").hide();
+$("#participant_company_id").change(function() {
+	id = $("#participant_company_id option:selected").val();
+	jQuery.getJSON('/companies/'+id+'.json', function(data){
+		if (data['color'] != null && data['color'].length > 0) {
+			$('#alerta-cracha').html('<strong><font size="3">Atenção!! Imprimir crachá na cor <font size="5">'+data['color']+'</font> para este participante!!</font></strong>');
+			$('#alerta-cracha').show();
+		} else {
+			$("#alerta-cracha").hide();
+		}
+	});
+});
+
+</script>

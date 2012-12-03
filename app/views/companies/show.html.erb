@@ -1,0 +1,10 @@
+<h2><%= @company.name %> <small><%= link_to(alterar, edit_company_path(@company)) %></small></h2>
+
+<%= hash_table 	"span3", 
+			   	"Nome" => @company.name, 
+				"Nome Fantasia" => @company.fantasy_name,
+				"CNPJ" => @company.cnpj,
+				"Código Cliente" => @company.cod_cliente
+%>
+
+<%= link_to voltar, companies_path %>

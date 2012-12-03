@@ -1,0 +1,16 @@
+<%= semantic_form_for(@event) do |f| %>
+  
+<%= f.inputs do %>
+<%= f.input :name, :label => "Nome" %> 
+<%= f.input :is_active, :label => "Ativo" %>
+<%= f.input :is_company_event, :label => "É evento empresarial" %><br/>
+<%= f.inputs :for => :photo do |photo| %>
+<%= photo.input :image, :as => :file, :label => "Logotipo do evento:" %>
+<% end %>
+
+<% end %>
+
+
+<%= f.buttons %>
+
+<% end %>

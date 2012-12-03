@@ -1,0 +1,60 @@
+<h2>Buscar Participante</h2>
+
+<%= form_tag "/participants/find" do %>
+  <%= label_tag "CPF:" %>
+  <%= text_field_tag "participant_cpf"  %>
+  <%= submit_tag "Buscar", :class => "btn", :id => :find_cpf_button %>
+<% end %>
+
+<%= form_tag "/participants/findbyname" do %>
+  <%= label_tag "NOME:" %>
+  <%= text_field_tag "participant_name"  %>
+  <%= submit_tag "Buscar", :class => "btn", :id => :find_name_button %>
+<% end %>
+
+<%= link_to with_icon("Empresarial","icon-lock icon-white"), new_participant_path, :class => "btn btn-info" if current_event.is_company_event %>
+
+<hr class="soften" />
+<br/>
+<h2>Buscar Credencial</h2>
+<%= form_tag "/credentials/find" do %>
+  <%= label_tag "Código de barras: " %>
+  <%= text_field_tag "bar_code"  %>
+  <%= submit_tag "Buscar" %>
+<% end %>
+
+<hr class="soften" />
+<br/>
+<h2>Participantes Credenciados <small>(Total: <%= @participants.count %>)</small></h2>
+
+<% if is_admin? %>
+<%= link_to with_icon("Exportar para Excel", "icon-download-alt"), participants_path(:format => :xls), :class => "btn"  %><br/><br/>
+<% end %>
+
+<table class="table">
+<thead>
+  <tr>
+    <th>Nome</th>
+    <th>Empresa</th>
+    <th>Telefone</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+</thead>
+<% @participants.each do |participant| %>
+  <tr>
+    <td><%= link_to participant.name, participant %></td>
+    <td><%= if participant.company then participant.company.name end %></td>
+    <td><%= participant.main_phone %></td>
+    <td><%= participant.email %></td>
+  </tr>
+<% end %>
+</table>
+
+<script type="text/javascript">
+ $(function(){
+	$("#participant_cpf").focus();
+ });
+</script>

@@ -1,0 +1,29 @@
+<h2><%= @participant.name %></h2>
+
+<div class="row">
+	<div class="span6">
+		<table class="table table-bordered">
+			<%= mostra_dado "CPF:", @participant.cpf %>
+			<%= mostra_dado "Telefone Principal:", @participant.main_phone %>
+			<%= mostra_dado "Ocupação:", @participant.occupation %>
+			<%= mostra_dado "Email:", @participant.email %>
+			<%= mostra_dado "Cidade:", @participant.address.cidade %>
+			<%= mostra_dado "Estado:", @participant.address.estado %>
+			<%= mostra_dado "Pagamentos:", @credential.payments.count %>
+		</table>
+	</div>
+</div>
+
+<br/>
+<%= link_to with_icon("Alterar dados", "icon-white icon-pencil"), edit_participant_path(@participant), :class => "btn btn-primary" %>
+
+<% if @credential %> 
+	<%= link_to with_icon("Ver credencial", "icon-white icon-user"), @credential, :class => "btn btn-primary" %>
+<% else %>
+	<%= link_to with_icon("Credenciar", "icon-white icon-barcode"), participant_credentials_path(@participant), :method => :post, :class => "btn btn-primary" %>
+<% end %>
+
+
+<br/><br/>
+
+<%= link_to voltar, participants_path %>

@@ -1,0 +1,40 @@
+<h2><%= @room.name %> <small><%= link_to alterar, edit_room_path(@room) if is_admin? %></small></h2> 
+
+<%= hash_table 	"span3",
+				"Evento" => @event.name,
+			   	"Capacidade" => @room.limit, 
+				"Credenciados" => @room.credentials.count,
+				"Preço" => "R$#{@room.price},00"
+%>
+
+<%= link_to with_icon("Acesso", "icon-barcode"), new_room_entrance_path(@room), :class => "btn" %> 
+<%= link_to with_icon("#{pluralize(@room.entrances.count,"entrada")}", "icon-share-alt"), room_entrances_path(@room), :class => "btn" %>
+
+<br/><br/><br/>
+<%= link_to voltar, @event %>
+<br/>
+<hr class="soften" />
+<br/>
+<h2>Participantes <small>(Total: <%= @room.participants.count %>)</small></h2>
+
+<%= link_to with_icon("Exportar para Excel", "icon-download-alt"), room_path(@room, :format => :xls), :class => "btn"  %><br/><br/>
+
+<table class="table" id="report">
+<thead>
+	<tr>
+		<th>Nome</th>
+	    <th>Telefone</th>
+	    <th>Cpf</th>
+	    <th>Email</th>
+	</tr>
+</thead>
+
+	<% @room.participants.each do |participant| %>
+	  <tr>
+	    <td><%= link_to participant.name, participant %></td>
+	    <td><%= participant.main_phone %></td>
+	    <td><%= participant.cpf %></td>
+	    <td><%= participant.email %></td>
+	  </tr>
+	<% end %>
+</table>

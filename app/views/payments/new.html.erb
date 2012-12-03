@@ -1,0 +1,10 @@
+<h2>Novo pagamento</h2>
+
+<p>
+	<b>Participante:</b>
+	<%= @credential.participant.name %>
+</p>
+<br/>
+<%= render 'form' %>
+
+<%= link_to voltar, @credential %>

@@ -1,0 +1,32 @@
+<%= f.inputs :name => "Endereço", :for => :address do |address| %>
+<br/>
+<div class="row">
+	<div class="span4">
+		<%= address.input :logradouro, :label => "Logradouro" %>
+		<%= address.input :numero, :label => "Numero" %>
+		<%= address.input :complemento, :label => "Complemento"%>
+		<%= address.input :cep , :label => "CEP"%>
+	</div>
+	<div class="span4 offset1">
+		<%= address.input :estado, :as => :select, :collection => Estado.hash_map %>
+		<%= address.input :cidade, :as => :select, :collection => Cidade.hash_map_for(@participant)  %>
+		<%= address.input :bairro %>
+	</div>
+<% end %>
+</div>
+
+<script type="text/javascript">
+ $(function(){
+	$("#participant_address_attributes_estado").change(function() {
+	    var estado = $('select#participant_address_attributes_estado :selected').val();
+		if (estado == "")  {
+			$("#participant_address_attributes_cidade").html("<option value=\"\"></option>");
+		} else {
+	    	jQuery.get('/cidades/cidades_select/' + estado, function(data){
+	        	$("#participant_address_attributes_cidade").html(data);
+	    	})
+		}
+	    return false;
+	  });
+ });
+</script>

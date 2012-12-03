@@ -1,0 +1,18 @@
+<h2>Eventos</h2>
+<%= link_to with_icon("Novo", "icon-plus"), new_event_path, :class => "btn" %>
+<br/><br/>
+<table class="table">
+<thead>  <tr>
+    <th>Nome</th>
+    <th>Ativo</th>
+    <th></th>
+  </tr>
+</thead>
+<% @events.each do |event| %>
+  <tr>
+    <td><%= link_to event.name, event %></td>
+    <td><%= checkbox(event.is_active) %></td>
+	<td><%= link_to excluir, event, :method => :delete, :confirm => "Tem certeza?", :class => "btn btn-small" if is_admin? %></td>
+  </tr>
+<% end %>
+</table>

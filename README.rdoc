@@ -1,0 +1,19 @@
+== About
+	
+	Gerenciador de Eventos - Damaceno Produções
+	
+== Usage
+
+  $ git clone git://github.com/lgfaria/eventos.git
+  $ cd eventos
+  $ bundle install # to make sure you have the Paperclip gem and correct version of Rails
+  $ rake db:migrate
+  $ rails server
+
+And go to http://localhost:3000/
+
+Developers:
+  - Luiz Gustavo Farina de Faria
+  - Ramon Teles Mussi Filho
+
+Copyright © 2012 PDM Sistemas.

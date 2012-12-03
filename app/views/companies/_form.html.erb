@@ -1,0 +1,20 @@
+<%= semantic_form_for(@company) do |f| %>
+  
+<%= f.inputs do %>
+<%= f.input :name, :label => "Razão Social:" %> 
+<%= f.input :fantasy_name, :label => "Nome fantasia:" %>
+<%= f.input :cnpj, :label => "CNPJ:" %>
+<%= f.input :cod_cliente, :label => "Codigo Cliente:" %>
+<%= f.input :color, :label => "Cor dos crachás:" %>
+<% end %>
+<%= f.buttons %>
+
+<%= hidden_field_tag 'popup', 'yes' if @popup %>
+
+<% end %>
+
+<script type="text/javascript">
+$(function(){ 
+	$("#company_cnpj").mask("99.999.999/9999-99");
+});
+</script>

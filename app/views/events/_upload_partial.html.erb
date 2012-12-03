@@ -1,0 +1,6 @@
+<%= semantic_form_for @upload, :html => { :multipart => true } do |f| %>
+<%= f.input :file, :as => :file, :label => "Importar participants (excel):" %>
+<%= submit_tag "Enviar", :class => :btn %>
+<%= hidden_field_tag "upload_type", "participants" %>
+<%= hidden_field_tag "event_id", @event.id %>
+<% end %>

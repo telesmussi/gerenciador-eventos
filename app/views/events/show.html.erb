@@ -1,0 +1,45 @@
+<h2><%= @event.name %> <small><%= link_to(alterar, edit_event_path(@event)) if is_admin? %></small></h2>
+
+
+
+<br/>
+<hr class="soften"/>
+<h2>Salas</h2>
+<% if is_admin? %> 
+	<%= link_to with_icon("Nova sala","icon-plus"), new_event_room_path(@event), :class => "btn" %>
+	<br/><br/> 
+<% end %>
+<table class="table">
+<thead>
+	<th>Nome</th>
+    <th>Capacidade</th>
+    <th>Participantes</th>
+    <th>Entradas</th>
+    <th>Preço</th>
+	<th></th>
+</thead>
+<% @event.rooms.each do |room| %>
+<tr>
+	<td><%= link_to room.name, event_room_path(@event,room) %></td>
+	<td><%= room.limit %></td>
+	<td><%= room.participants.count %>
+	<td><%= room.entrances.count %>
+	<td>R$<%= room.price %>,00</td>
+	<td>
+	<%= link_to with_icon("Acesso", "icon-barcode"), new_room_entrance_path(room), :class => "btn" if @event == current_event %> 
+	<%= link_to excluir, event_room_path(@event,room), :method => :delete, :confirm => "Tem certeza?", :class => "btn btn-small" if is_admin? %>
+	</td>
+</tr>
+<%end%>
+
+<% if @event.rooms.count == 0 %>
+	<tr>
+		<td colspan="4">Não há salas cadastradas para este evento.</td>
+	</tr>
+<% end %>
+</table>
+
+<br/>
+<%= link_to voltar, events_path %>
+
+

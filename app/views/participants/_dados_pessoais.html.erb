@@ -1,0 +1,15 @@
+<%= f.inputs :name => "Dados Pessoais" do %>
+<br/>
+<div class="row">
+	<div class="span4">
+		<%= f.input :name , :label => "Nome:" %>
+		<%= f.input :marital_status , :as => :radio, :collection => ["Solteiro(a)", "Casado(a)", "Viúvo(a)", "Divorciado(a)"], :label => "Estado Civil:" %>
+	</div>
+	<div class="span4 offset1">
+		<%= f.input :cpf, :input_html => { :readonly => !current_event.is_company_event }, :label => "CPF:" %>
+		<%= f.input :birth , :label => "Data Nascimento:" %>
+		<%= f.input :sex, :as => :radio, :collection => ["Masculino", "Feminino"], :label => "Sexo:" %>
+	</div>
+</div>
+<% end %>
+<br/>

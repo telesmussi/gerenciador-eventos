@@ -1,0 +1,12 @@
+<%= semantic_form_for(@user, :html => {:class => 'form-horizontal'}) do |f| %>
+
+<%= f.inputs do %>
+<%= f.input :name, :label => "Nome", :input_html => { :readonly => !is_admin? } %>
+<%= f.input :login, :label => "Usuário", :input_html => { :readonly => !is_admin? } %>
+<%= f.input :password, :label => "Senha", :as => :string, :input_html => { :readonly => !is_admin? && current_user.id != @user.id } if @user.id %>
+<%= f.input :is_admin, :label => "Administrador" if is_admin? %>
+<% end %>
+
+<%= f.buttons %>
+
+<% end %>

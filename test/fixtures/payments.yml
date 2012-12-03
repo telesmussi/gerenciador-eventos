@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  credential: 
+  method: MyString
+  amount: 1.5
+  user: 
+  observation: MyString
+
+two:
+  credential: 
+  method: MyString
+  amount: 1.5
+  user: 
+  observation: MyString

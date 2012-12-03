@@ -1,0 +1,22 @@
+<h2>Salas <small>(<%= @event.name %>)</small></h2>
+<br/>
+<table class="table">
+<thead>
+	<th>Sala</th>
+	<th>Preço</th>
+	<th>Lotação</th>
+	<th>Acesso</th>
+</thead>
+<tbody>
+	<% @rooms.each do |room| %>
+	
+	<tr>
+	<td><%= link_to room.name, room %></td>
+	<td>R$<%= room.price %>,00</td>
+	<td><%= room_progress(room) %></td>
+	<td><%= link_to with_icon("Acesso", "icon-barcode"), new_room_entrance_path(room), :class => "btn" %></td>
+	</tr>
+	<%end%>
+	</tbody>
+</table>
+<br />

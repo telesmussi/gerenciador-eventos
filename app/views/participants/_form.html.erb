@@ -1,0 +1,20 @@
+<%= semantic_form_for(@participant, :html => {:class => "form-horizontal"}) do |f| %>
+<%= f.actions do %>
+<%= f.action :submit, :label => "Salvar" %>
+<% end %>
+
+<%= render :partial => 'dados_pessoais', :locals => { :f => f } %>
+
+<%= render :partial => 'dados_empresariais', :locals => { :f => f } %>
+
+<%= render :partial => 'dados_contato', :locals => { :f => f } %>
+
+<%= render :partial => 'informacoes_adicionais', :locals => { :f => f } %>
+
+<%= render :partial => 'endereco', :locals => { :f => f } %>
+
+<%= f.actions do %>
+<%= f.action :submit, :label => "Salvar" %>
+<% end %>
+
+<% end %>

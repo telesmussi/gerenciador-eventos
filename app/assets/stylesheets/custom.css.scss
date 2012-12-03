@@ -1,0 +1,187 @@
+@import "bootstrap";
+
+
+/* universal */
+
+html {
+overflow-y: scroll;
+}
+
+a {
+  color: #0089B3;
+}
+
+a:hover { 
+  background-color: #9999;
+}
+
+
+body {
+padding-top: 70px;
+}
+
+section {
+overflow: auto;
+}
+
+textarea {
+resize: vertical;
+}
+
+#content {
+  margin-bottom: 60px;
+}
+
+.center {
+text-align: center;
+}
+
+.center h1 {
+margin-bottom: 10px;
+}
+
+input, textarea, select, .uneditable-input {
+height: auto;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+line-height: 1;
+}
+
+h1 {
+font-size: 3em;
+letter-spacing: -2px;
+margin-bottom: 30px;
+text-align: center;
+}
+
+h2 {
+font-size: 2.2em;
+letter-spacing: -1px;
+margin-bottom: 30px;
+text-align: left;
+font-weight: normal;
+color: #999;
+margin-left: -15px;
+}
+
+h2 small {
+    font-size: 14px;
+}
+
+p {
+font-size: 1.1em;
+line-height: 1.7em;
+}
+
+
+/* header */
+#logo {
+float: left;
+margin-right: 10px;
+font-size: 1.7em;
+color: #fff;
+text-transform: uppercase;
+letter-spacing: -1px;
+padding-top: 9px;
+font-weight: bold;
+line-height: 1;
+}
+
+#logo:hover {
+color: blue;
+text-decoration: none;
+}
+
+
+/* footer */
+
+footer {
+background-color: white;
+position:fixed;
+bottom:0px;
+height:30px;
+width:95%;
+margin-top: 45px;
+padding-top: 5px;
+border-top: 1px solid #eaeaea;
+color: #999;
+padding-left: 30px;
+}
+
+footer a {
+color: #555;
+}  
+
+footer a:hover { 
+color: #222;
+}
+
+footer small {
+float: left;
+}
+
+footer ul {
+float: right;
+list-style: none;
+}
+
+footer ul li {
+float: left;
+margin-left: 10px;
+}
+
+/* COMPONENTES MODIFICADOS */
+
+.nav-list .divider {
+    height: 1px;
+    margin: 5px -15px;
+    overflow: hidden;
+    background-color: #e5e5e5;
+    border-bottom: 1px solid white;
+    padding: 0;
+
+    // IE7 needs a set width since we gave a height. Restricting just
+    // to IE7 to keep the 1px left/right space in other browsers.
+    // It is unclear where IE is getting the extra space that we need
+    // to negative-margin away, but so it goes.
+    *width: 100%;
+    *margin: -5px -15px 5px;
+  }
+
+.progress-warning .bar {
+    background-color: #FAA732;
+}
+
+
+tr:hover {
+   background-color: #F5F5F5;
+}
+
+.navbar-inner {
+	background: url("/assets/header-bg.png") repeat-x scroll 0 0 #00A0D1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25), 0 -1px 0 rgba(0, 0, 0, 0.1) inset;
+    height: 40px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.navbar .nav > li > a {
+    color: #BFE4EF;
+}
+
+.navbar .nav > li > a:hover {
+    background: none repeat scroll 0 0 #0089B3;
+}
+
+.btn-info {
+	background: url("/assets/header-bg.png") repeat-x scroll 0 0 #00A0D1;
+}
+
+.dropdown-menu .active > a:hover, .dropdown-menu li > a:hover {
+    background-color: #00A0D1;
+}

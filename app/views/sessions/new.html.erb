@@ -1,0 +1,32 @@
+</div>
+
+<div class="row">
+	<div class="span8 offset4 center">
+		<div id="container-alerta" style="height: 100px">
+		<% flash.each do |key, value| %>
+	      <div class="alert alert-error" style="margin-top: 20px; padding: 15px">
+	        <%= value %>
+		 </div>
+	<% end %>
+	</div>
+	
+			<div class="well">
+			<h1>Bem vindo!</h1>
+			<br/>
+			<strong><p> Digite seu usuário e senha para continuar. </p> <br/>
+				<%= semantic_form_for(:session, url: sessions_path, :html =>  {:class =>"form-vertical"}) do |f| %>
+
+				<%= f.input :login %>
+
+				<%= f.input :password %>
+
+				<br/>
+				<center>
+					<button type="submit" class="btn btn-info">
+						<i class="icon-user icon-white"></i> Entrar
+					</button>
+				</center>
+				<% end %>
+			</div>
+		</div>
+	</div>

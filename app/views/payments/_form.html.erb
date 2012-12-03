@@ -1,0 +1,52 @@
+<%= semantic_form_for([@credential, @payment]) do |f| %>
+
+<h3>Selecione as salas:</h3>
+<br/>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th></th>
+			<th>Sala</th>
+			<th>Preço</th>
+			<th>Capacidade</th>
+			<th>Participantes</th>
+			<th>Lotação</th>
+		</tr>
+	</thead>
+
+	<% current_event.rooms.each do |room| %>
+	<tr>
+		<td><%= check_box_tag "payment[room_ids][]", room.id, @credential.rooms.include?(room), :disabled => @credential.rooms.include?(room), :valor => room.price %></td>
+		<td><%= room.name %></td> 
+		<td>R$<%= room.price %>,00</td>
+		<td><%= room.limit %></td>
+		<td><%= room.participants.count %></td>
+		<td><%= room_progress(room) %></td>
+		
+<!--	<td><%= room_status(room) %></td> -->
+	</tr>
+	<% end %>
+</table>
+<br/>
+
+<%= f.inputs do %>
+<div class="row">
+	<div class="span2">
+		Cobranças adicionais:<br/> R$<%= text_field_tag :adicionais, nil, :class => "input-mini" %>,00
+	</div>
+	<div class="span5">
+	<%= f.input :observation, :label => "Observações:", :input_html => { :class => "span12" } %>
+</div>
+<div class="span3 offset1">
+<%= f.input :amount, :input_html => { :readonly => true }, :label => "Valor total: (R$)", :class => "span1 input-mini" %>
+</div>
+</div>
+<% end %>
+<br/>
+<%= f.actions do %>
+	<%= f.action :submit, :label => "Salvar pagamento" %>
+<% end %>
+<% end %>
+
+

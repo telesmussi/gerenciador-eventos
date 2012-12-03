@@ -1,0 +1,19 @@
+<div class="well sidebar-nav">
+            <ul class="nav nav-list">
+			<% if current_event? %>
+              <li class="nav-header">Opções</li>
+              <li><%= link_to with_icon("Participantes","icon-user") , participants_path %></li>
+              <li><%= link_to with_icon("Salas","icon-bookmark"), rooms_path %></li>
+			  <li class="divider"></li>
+			<% end %>
+			<li class="nav-header">Evento atual</li>
+			<% if current_event? %>
+			  <li><%= link_to with_icon(current_event.name, "icon-star"), current_event %></li>
+			  <li><%= link_to with_icon("Trocar evento", "icon-refresh"), events_select_path %></li>
+			<% else %>
+			<li><%= link_to with_icon("Selecionar evento", "icon-plus"), events_select_path %></li>
+			<% end %>
+			<li class="divider"></li>
+			<li><%= link_to with_icon("Sair", "icon-remove"), signout_path, :method => :delete %></li>
+           </ul>
+</div><!--/.well -->

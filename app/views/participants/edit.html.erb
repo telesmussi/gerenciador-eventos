@@ -1,0 +1,27 @@
+<h2>Participante</h2>
+
+<% if @credential %> 
+	<%= link_to with_icon("Ver credencial", "icon-user"), @credential, :class => "btn" %>
+
+<% else %>
+
+	<%= link_to with_icon("Credenciar", "icon-barcode"), 
+				participant_credentials_path(@participant), 
+				:method => :post, 
+				:class => "btn"
+	%>
+
+<% end %>
+
+<% if @participant.photo %>
+	<%= link_to with_icon("Ver Foto", "icon-eye-open"), @participant.photo, :class => "btn" %>
+<% else %>
+	<%= link_to with_icon("Capturar Foto", "icon-eye-open"), new_participant_photo_path(@participant), :class => "btn" %>
+<% end %>
+	
+<br/><br/>
+
+<%= render 'form' %>
+
+<%= link_to voltar, participants_path %>
+<br> <br><br><br>

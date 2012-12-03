@@ -1,0 +1,19 @@
+<h2>Selecione um evento</h2>
+
+<table class="table">
+<% @events.each do |event| %>
+	<tr>
+		<td>
+<%= event.name %></td>
+<td>
+<%= link_to with_icon("Selecionar","icon-check"), "/events/#{event.id}/select", :class => "btn btn-small" %>
+</td>
+</tr>
+<%  end %>	
+</table>
+
+<% if @events.count == 0 %>
+	<div class="alert alert-info span8" >
+		Não há eventos para selecionar. Clique no link 'Eventos' no topo da página para cadastrar um novo evento.
+	</div>
+<% end %>

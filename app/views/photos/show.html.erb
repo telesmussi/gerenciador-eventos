@@ -1,0 +1,7 @@
+<h2>Foto de <%= @photo.participant.name %></h2>
+
+<%= image_tag @photo.image.url %>
+<br/><br/>
+<p>
+  <%= link_to voltar, @photo.participant %> | <%= link_to with_icon("Capturar nova foto", "icon-eye-open"), new_participant_photo_path(@photo.participant) %>
+</p>

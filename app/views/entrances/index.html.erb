@@ -1,0 +1,28 @@
+<h2><%= @room.name %></h2>
+<h3> Relatório de entradas</h3><br/>
+<%= link_to with_icon("Exportar para Excel", "icon-download-alt"), room_entrances_path(@room, :format => :xls), :class => "btn"  %><br/>
+<br/>
+<table class="table">
+<thead>
+  <tr>
+	<th>Entrada</th>
+    <th>Nome</th>
+    <th>Horário da entrada</th>
+    
+  </tr>
+</thead>
+<% @entrances.each do |entrance| %>
+  <tr>
+	<td><%= badge_for_entrance(entrance) %></td>
+    <td><%= link_to entrance.participant.name, entrance.participant %></td>
+    <td><%= entrance.created_at %></td>
+  </tr>
+<% end %>
+<tr>
+	<td></td>
+	<td><b>Total de entradas:</b> <%= @entrances.count %></td>
+	<td colspan="6"></td>
+</tr>
+</table>
+
+<%= link_to voltar, @room %><br/><br/>

@@ -1,0 +1,14 @@
+<%= f.inputs :name => "Contato" do %> <br/>
+<div class="row">
+	<div class="span4">
+		<%= f.input :main_phone, :label => "Telefone Principal:" %> 
+		<%= f.input :secondary_phone, :label => "Telefone Secundário:" %> 
+		<%= f.input :email %>
+	</div>
+	<div class="span4 offset1">
+		<%= button_to_function "9 dígitos?", "nono_digito_primary()" %> <br/><br/>
+		<%= button_to_function "9 dígitos?", "nono_digito_secondary()" %>
+	</div>
+</div>
+<% end %>
+<br/>

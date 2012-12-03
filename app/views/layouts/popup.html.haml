@@ -1,0 +1,22 @@
+!!!
+%html
+  %head
+    %title Damaceno Eventos
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    = render 'layouts/shim'
+  %body
+    .container-fluid
+      .row-fluid
+        - if signed_in?
+          .span9{:style => "padding-left: 30px"}
+            .row-fluid
+              - flash.each do |key, value|
+                %div{:class => "alert alert-#{key} span8"}
+                  = value
+                %br
+            #content
+              = yield
+        - else
+          = yield

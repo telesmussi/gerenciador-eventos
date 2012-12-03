@@ -1,0 +1,6 @@
+<h2>Usuário <small>(<%= @user.name %>)</small></h2>
+
+<%= hash_table "span6", "Login" => @user.login, "Senha" => @user.password, "Ativo" => checkbox(@user.is_active) %>
+
+<% if is_admin? %> <%= link_to voltar, users_path %> | <%end%>
+				   <%= link_to alterar, edit_user_path(@user) %>

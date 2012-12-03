@@ -1,0 +1,9 @@
+<% if @output %>
+<table>
+<% @output.each do |msg| %>
+<tr><td>
+<%= msg %></td></tr>
+<% end %>
+<% end %>
+
+<%= link_to voltar, :back %>
