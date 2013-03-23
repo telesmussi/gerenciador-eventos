@@ -5,4 +5,4 @@ require File.expand_path('../application', __FILE__)
 Eventos::Application.initialize!
 
 # Comentado => Desenvolvimento/ Caso contrário => Produção
-#Rails.env='production'
+Rails.env='production'

@@ -98,13 +98,11 @@ ActiveRecord::Schema.define(:version => 20120830193557) do
     t.datetime "updated_at",      :null => false
     t.string   "obs1"
     t.string   "obs2"
-    t.integer  "photo_id"
     t.integer  "company_id"
   end
 
   add_index "participants", ["address_id"], :name => "index_participants_on_address_id"
   add_index "participants", ["company_id"], :name => "index_participants_on_company_id"
-  add_index "participants", ["photo_id"], :name => "index_participants_on_photo_id"
 
   create_table "payments", :force => true do |t|
     t.integer  "credential_id"

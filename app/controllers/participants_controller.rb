@@ -76,12 +76,4 @@ class ParticipantsController < ApplicationController
     @participant = Participant.find_by_cpf(cpf) if cpf
     redirect_to @participant ? edit_participant_path(@participant) : new_participant_path, :cpf => cpf
   end
-
-   # POST /participants/findbyname
-  def find_by_name
-    name = params[:participant_name]
-    @participant = Participant.find_by_name(name) if name
-    redirect_to @participant ? edit_participant_path(@participant) : new_participant_path, :name => name
-  end
-
 end

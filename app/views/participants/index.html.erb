@@ -6,12 +6,6 @@
   <%= submit_tag "Buscar", :class => "btn", :id => :find_cpf_button %>
 <% end %>
 
-<%= form_tag "/participants/findbyname" do %>
-  <%= label_tag "NOME:" %>
-  <%= text_field_tag "participant_name"  %>
-  <%= submit_tag "Buscar", :class => "btn", :id => :find_name_button %>
-<% end %>
-
 <%= link_to with_icon("Empresarial","icon-lock icon-white"), new_participant_path, :class => "btn btn-info" if current_event.is_company_event %>
 
 <hr class="soften" />

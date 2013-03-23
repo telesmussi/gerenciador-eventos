@@ -1,7 +1,4 @@
 <%= semantic_form_for(@participant, :html => {:class => "form-horizontal"}) do |f| %>
-<%= f.actions do %>
-<%= f.action :submit, :label => "Salvar" %>
-<% end %>
 
 <%= render :partial => 'dados_pessoais', :locals => { :f => f } %>
 
@@ -16,5 +13,4 @@
 <%= f.actions do %>
 <%= f.action :submit, :label => "Salvar" %>
 <% end %>
-
 <% end %>
