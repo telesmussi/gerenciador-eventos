@@ -1,4 +1,4 @@
-<h2>Empresas</h2>
+<h2>Importação</h2>
 
 
 <%= semantic_form_for @upload, :html => { :multipart => true } do |f| %>
@@ -7,29 +7,17 @@
 <%= hidden_field_tag "upload_type", "companies" %>
 <% end %>
 
-<%= link_to with_icon("Novo", "icon-plus"), new_company_path, :class => "btn" %>
+<%= semantic_form_for @upload, :html => { :multipart => true } do |f| %>
+<%= f.input :file, :as => :file, :label => "Importar Participantes (excel):" %>
+<%= submit_tag "Enviar", :class => :btn %>
+<%= hidden_field_tag "upload_type", "participants2" %>
+<% end %>
+
+<br/>
+
+<h2> Empresas </h2>
+
+<%= link_to with_icon("Nova Empresa", "icon-plus"), new_company_path, :class => "btn" %>
 <%= link_to with_icon("Excluir todas empresas","icon-trash"), companies_path, :method => :delete, :confirm => "Tem certeza?", :class => "btn btn-small" if is_admin? %></td>
 
-<br/><br/>
-<table class="table">
-<thead>
-  <tr>
-    <th>Razão Social</th>
-    <th>Nome Fantasia</th>
-    <th>Cnpj</th>
-    <th>Código Cliente</th>
-    <th></th>
-  </tr>
-</thead>
-<% @companies.each do |company| %>
-  <tr>
-    <td><%= link_to company.name, company %></td>
-    <td><%= company.fantasy_name %></td>
-    <td><%= company.cnpj %></td>
-    <td><%= company.cod_cliente %></td>
-    <td><%= link_to excluir, company, :method => :delete, :confirm => "Tem certeza?", :class => "btn btn-small" if is_admin? %></td>
-  </tr>
-<% end %>
-</table>
 
-<br />

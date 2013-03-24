@@ -2,6 +2,7 @@ class ParticipantsController < ApplicationController
   # GET /participants
   # GET /participants.json
   def index
+    @upload = Upload.new
     @event = current_event
     @participants = @event.participants
     respond_to do |format|
@@ -76,4 +77,11 @@ class ParticipantsController < ApplicationController
     @participant = Participant.find_by_cpf(cpf) if cpf
     redirect_to @participant ? edit_participant_path(@participant) : new_participant_path, :cpf => cpf
   end
+
+  # POST /participants/findbyname
+  def search_name
+    @participants = Participant.where("name like :fieldname", { :fieldname => "%#{params[:participant_name]}%" } )
+  end
+
+
 end

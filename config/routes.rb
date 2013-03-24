@@ -12,6 +12,8 @@ Eventos::Application.routes.draw do
   match '/events/:id/select', to: 'events#selected'
   
   match '/participants/find', to: 'participants#find_by_cpf', via: :post
+
+  match 'participants/findbyname', to: 'participants#search_name', via: :post
   
   match '/participants/new_for_company', to: 'participants#new_for_company', via: :post
 

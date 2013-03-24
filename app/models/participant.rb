@@ -7,12 +7,11 @@ class Participant < ActiveRecord::Base
   attr_accessible :birth, :cpf, :email, :main_phone, :marital_status, :name, :occupation, :secondary_phone, :sex, :surname, :obs1, :obs2, :address_attributes, :company_id
   accepts_nested_attributes_for :address
 
-  validates_presence_of :name, :email
+  validates_presence_of :name
   validates_presence_of :cpf, :unless => :is_enterprise?
   validates_presence_of :company_id, :if => :is_enterprise?
-  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   validates_uniqueness_of :cpf, :allow_blank => true, :allow_nil => true
-  
+
   def is_enterprise?
     @is_enterprise
   end

@@ -1,0 +1,28 @@
+<h2>Participantes Encontrados</h2>
+
+<table class="table">
+<thead>
+  <tr>
+    <th>Nome</th>
+    <th>Empresa</th>
+    <th>Telefone</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+  </tr>
+</thead>
+<% @participants.each do |participant|  %>
+  <tr>
+    <td><%= link_to participant.name, participant %></td>
+    <td><%= if participant.company then participant.company.name end %></td>
+    <td><%= participant.main_phone %></td>
+    <td><%= participant.email %></td>
+    <td><%= link_to alterar, edit_participant_path(participant), :class => "btn btn-small" %></td>
+    <td>
+      <% if is_admin? %>
+        <td>  <%= link_to excluir, participant, confirm: 'Tem certeza?', method: :delete, :class => "btn btn-small" %> </td>
+      <%end%>
+    </td>
+  </tr>
+<% end %>
+</table>

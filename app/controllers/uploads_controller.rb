@@ -15,6 +15,8 @@ class UploadsController < ApplicationController
       @output = import_to_room @upload.file.path, Room.find(params[:room_id]), @event
     elsif params[:upload_type] == "companies"
       @output = import_companies @upload.file.path
+    elsif params[:upload_type] == "participants2"
+      @output = import_participants2 @upload.file.path
     end
     render action: "show"
   end
@@ -26,14 +28,10 @@ class UploadsController < ApplicationController
     sheet.each 1 do |row|
       participant = Participant.new
       participant.name = row[0]
-      participant.main_phone = row[1]
-      participant.email = row[2]
-      participant.cpf = row[3]
-      participant.occupation = row[4]
       if participant.save
-        output << "OK!! #{participant.name} // #{participant.main_phone} // #{participant.email} // #{participant.cpf} // #{participant.occupation} ----"
+        output << "OK!! #{participant.name} ----"
       else
-        output << "falhou!! #{participant.name} // #{participant.main_phone} // #{participant.email} // #{participant.cpf} // #{participant.occupation} ----"
+        output << "falhou!! #{participant.name} ----"
       end
       credential = Credential.new
       credential.participant_id = participant.id
@@ -88,6 +86,25 @@ class UploadsController < ApplicationController
     end
     output
   end
+
+  def import_participants2(file)
+    output = Array.new
+    workbook = Spreadsheet.open file
+    sheet = workbook.worksheet 0
+    sheet.each 1 do |row|
+      participant = Participant.new
+      participant.name = row[0]
+      participant.cpf = row[1]
+      participant.company_id = row[2]
+      if participant.save
+        output << "Inserido com sucesso: #{participant.name} // #{participant.cpf} // #{participant.company_id} "
+      else
+        output << "Falha ao inserir: #{participant.name} // #{participant.cpf} // #{participant.company_id} "
+      end
+    end
+    output
+  end
+
   
   
 end

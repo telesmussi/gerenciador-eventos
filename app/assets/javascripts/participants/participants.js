@@ -7,6 +7,7 @@ $(function(){
     $("#participant_birth").mask("99/99/9999");
 	$("#participant_address_attributes_cep").mask("99999-999");
 	$('#find_cpf_button').click(function() { if ($("#participant_cpf").val()) $(this).submit; else return false; });
+    $('#find_name_button').click(function() { if ($("#participant_name").val()) $(this).submit; else return false; });
 });
 
 var primary = false;
